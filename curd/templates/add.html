@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+        <link rel="stylesheet" href="{% static 'bootstrap.min.css' %}">
+
+    <title>add login</title>
+</head>
+<body>
+      <div class="container my-4">
+       <h3>ADD POST</h3>
+       <div class="card my-3">
+           <h5 class="card-header">add post</h5>
+           <div class="card-body">
+               {% if messages %}
+                   {% for msg in messages %}
+                      <p class="text-success">{{msg}}</p>
+                   {% endfor %}
+               {% endif %}
+               <form method="post" action="/add">
+                   {% csrf_token %}
+                   <table class="table table-bordered">
+                       <tr>
+                           <th>Title</th>
+                           <td>
+                               <input type="text" name= "title" class="form-control"/>
+                           </td>
+                       </tr>
+                       <tr>
+                           <th>Detail</th>
+                           <td>
+                               <textarea class="form-control" name="detail"></textarea>
+                           </td>
+                       </tr>
+                       <tr>
+                           <td colspan="2">
+                               <button type="submit" class="btn btn-primary">Submit</button>
+                           </td>
+                       </tr>
+                   </table>
+               </form>
+
+           </div>
+       </div>
+
+   </div>
+
+</body>
+</html>
